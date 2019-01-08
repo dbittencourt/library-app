@@ -1,0 +1,27 @@
+@model Borrow
+
+@{
+    ViewBag.Title = "Return a book";
+}
+<h2>Return a Book</h2>
+<div class="col-md-4">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @($"Returning {Model.Book.Title} borrowed by {Model.Borrower.FirstName}.")
+            </div>
+        </div>
+        <input asp-for="BorrowId" type="hidden" />
+        <input asp-for="BorrowerId" type="hidden" />
+        <input asp-for="BookId" type="hidden" />
+        <input asp-for="From" type="hidden" />
+        <div class="form-group">
+            <input type="submit" value="Return" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<p>
+    <a asp-action="Index" asp-controller="Books">Back to books</a>
+</p>
